@@ -4,6 +4,9 @@
 
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
+int isGameRunning = FALSE;
+
+int playerX, playerY;
 
 int initializeWindow() {
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -31,16 +34,60 @@ int initializeWindow() {
 	return TRUE;
 }
 
+
+
+void destroyWindow() {
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
+}
+
+void setup() {
+	playerX = 0;
+	playerY = 0;
+}
+
+void processInput() {
+	SDL_Event event;
+	SDL_PollEvent(&event);
+	switch (event.type) {
+		case SDL_QUIT: {
+			isGameRunning = FALSE;
+			break;
+		}
+		case SDL_KEYDOWN: {
+			if (event.key.keysym.sym == SDLK_ESCAPE)
+				isGameRunning = FALSE;
+			break;
+		}
+	}
+}
+
+void update() {
+	playerX++;
+	playerY++;
+}
+
+void render() {
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_RenderClear(renderer);
+	
+	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+	SDL_Rect rect = { playerX, playerY, 20, 20 };
+	SDL_RenderFillRect(renderer, &rect);
+
+	SDL_RenderPresent(renderer);
+}
 int main(int argc, char* args[]) {
-	initializeWindow();
+	isGameRunning = initializeWindow();
 
 	setup();
 	
-	while (1) {
+	while (isGameRunning) {
 		processInput();
 		update();
 		render();
 	}
-
+	destroyWindow();
 	return 0;
 }
