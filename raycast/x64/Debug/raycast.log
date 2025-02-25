@@ -1,2 +1,10 @@
 ﻿  Main.c
-  raycast.vcxproj -> C:\Users\dbaum\Documents\c_projects\raycast\x64\Debug\raycast.exe
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(13,2): warning C4013: 'setup' undefined; assuming extern returning int
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(16,3): warning C4013: 'processInput' undefined; assuming extern returning int
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(17,3): warning C4013: 'update' undefined; assuming extern returning int
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(18,3): warning C4013: 'render' undefined; assuming extern returning int
+Main.obj : error LNK2019: unresolved external symbol setup referenced in function SDL_main
+Main.obj : error LNK2019: unresolved external symbol processInput referenced in function SDL_main
+Main.obj : error LNK2019: unresolved external symbol update referenced in function SDL_main
+Main.obj : error LNK2019: unresolved external symbol render referenced in function SDL_main
+C:\Users\dbaum\Documents\c_projects\raycast\x64\Debug\raycast.exe : fatal error LNK1120: 4 unresolved externals
