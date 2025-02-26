@@ -1,2 +1,4 @@
 ﻿  Main.c
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(71,17): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(72,17): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
   raycast.vcxproj -> C:\Users\dbaum\Documents\c_projects\raycast\x64\Debug\raycast.exe

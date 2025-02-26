@@ -5,6 +5,7 @@
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 int isGameRunning = FALSE;
+int ticksLastFrame = 0;
 
 int playerX, playerY;
 
@@ -34,8 +35,6 @@ int initializeWindow() {
 	return TRUE;
 }
 
-
-
 void destroyWindow() {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
@@ -64,8 +63,13 @@ void processInput() {
 }
 
 void update() {
-	playerX++;
-	playerY++;
+	while (!SDL_TICKS_PASSED(SDL_GetTicks(), ticksLastFrame + FRAME_TIME_LENGTH));
+
+	float deltaTime = (SDL_GetTicks() - ticksLastFrame) / 1000.0f;
+
+	ticksLastFrame = SDL_GetTicks();
+	playerX += 100 * deltaTime;
+	playerY += 100 * deltaTime;
 }
 
 void render() {
