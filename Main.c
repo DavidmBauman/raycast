@@ -2,12 +2,38 @@
 #include <SDL.h>
 #include "Constants.h"
 
+const int map[MAP_NUM_ROWS][MAP_NUM_COLS] = {
+	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 1 , 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
+	{1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+};
+
+struct Player {
+	float x;
+	float y;
+	float width;
+	float height;
+	int turnDirection; //-1 for left, +1 for right
+	int walkDirection; //-1 for back, +1 for front
+	float rotationAngle;
+	float walkSpeed;
+	float turnSpeed;
+}  player;
+
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 int isGameRunning = FALSE;
 int ticksLastFrame = 0;
-
-int playerX, playerY;
 
 int initializeWindow() {
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -42,8 +68,77 @@ void destroyWindow() {
 }
 
 void setup() {
-	playerX = 0;
-	playerY = 0;
+	player.x = WINDOW_WIDTH / 2;
+	player.y = WINDOW_HEIGHT / 2;
+	player.width = 1;
+	player.height = 1;
+	player.turnSpeed = 0;
+	player.walkDirection = 0;
+	player.rotationAngle = PI / 2;
+	player.walkSpeed = 200;
+	player.turnSpeed = 175 * (PI / 180);
+}
+
+int mapHasWallAt(float x, float y) {
+	if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT) {
+		return TRUE;
+	}
+	int mapGridIndexX = floor(x / TILE_SIZE);
+	int mapGridIndexY = floor(y / TILE_SIZE);
+	return map[mapGridIndexY][mapGridIndexX] != 0;
+}
+
+void movePlayer(float deltaTime) {
+	player.rotationAngle += player.turnDirection * player.turnSpeed * deltaTime;
+	float moveStep = player.walkDirection * player.walkSpeed * deltaTime;
+
+	float newPlayerX = player.x + cos(player.rotationAngle) * moveStep;
+	float newPlayerY = player.y + sin(player.rotationAngle) * moveStep;
+
+
+	if (!mapHasWallAt(newPlayerX, newPlayerY)) {
+		player.x = newPlayerX;
+		player.y = newPlayerY;
+	}
+	
+}
+
+void renderPlayer() {
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	SDL_Rect playerRect = {
+		player.x * MINI_MAP_SCALE_FACTOR,
+		player.y * MINI_MAP_SCALE_FACTOR,
+		player.width * MINI_MAP_SCALE_FACTOR,
+		player.height * MINI_MAP_SCALE_FACTOR
+	};
+	SDL_RenderFillRect(renderer, &playerRect);
+
+	SDL_RenderDrawLine(
+		renderer,
+		player.x * MINI_MAP_SCALE_FACTOR,
+		player.y * MINI_MAP_SCALE_FACTOR,
+		MINI_MAP_SCALE_FACTOR * player.x + cos(player.rotationAngle) * 40,
+		MINI_MAP_SCALE_FACTOR * player.y + sin(player.rotationAngle) * 40
+	);
+}
+
+void renderMap() {
+	for (int i = 0; i < MAP_NUM_ROWS; i++) {
+		for (int j = 0; j < MAP_NUM_COLS; j++) {
+			int tileX = j * TILE_SIZE;
+			int tileY = i * TILE_SIZE;
+			int tileColor = map[i][j] != 0 ? 255 : 0;
+
+			SDL_SetRenderDrawColor(renderer, tileColor, tileColor, tileColor, 255);
+			SDL_Rect mapTileRect = {
+				tileX * MINI_MAP_SCALE_FACTOR,
+				tileY * MINI_MAP_SCALE_FACTOR,
+				TILE_SIZE * MINI_MAP_SCALE_FACTOR,
+				TILE_SIZE * MINI_MAP_SCALE_FACTOR
+			};
+			SDL_RenderFillRect(renderer, &mapTileRect);
+		}
+	}
 }
 
 void processInput() {
@@ -57,28 +152,48 @@ void processInput() {
 		case SDL_KEYDOWN: {
 			if (event.key.keysym.sym == SDLK_ESCAPE)
 				isGameRunning = FALSE;
+			if (event.key.keysym.sym == SDLK_w)
+				player.walkDirection = +1;
+			if (event.key.keysym.sym == SDLK_s)
+				player.walkDirection = -1;
+			if (event.key.keysym.sym == SDLK_d)
+				player.turnDirection = +1;
+			if (event.key.keysym.sym == SDLK_a)
+				player.turnDirection = -1;
+			break;
+		}
+		case SDL_KEYUP: {
+			if (event.key.keysym.sym == SDLK_w)
+				player.walkDirection = 0;
+			if (event.key.keysym.sym == SDLK_s)
+				player.walkDirection = 0;
+			if (event.key.keysym.sym == SDLK_d)
+				player.turnDirection = 0;
+			if (event.key.keysym.sym == SDLK_a)
+				player.turnDirection = 0;
 			break;
 		}
 	}
 }
 
 void update() {
-	while (!SDL_TICKS_PASSED(SDL_GetTicks(), ticksLastFrame + FRAME_TIME_LENGTH));
-
+	
+	int timeToWait = FRAME_TIME_LENGTH - (SDL_GetTicks() - ticksLastFrame);
+	if (timeToWait > 0 && timeToWait <= FRAME_TIME_LENGTH) {
+		SDL_Delay(timeToWait);
+	}
 	float deltaTime = (SDL_GetTicks() - ticksLastFrame) / 1000.0f;
-
 	ticksLastFrame = SDL_GetTicks();
-	playerX += 100 * deltaTime;
-	playerY += 100 * deltaTime;
+
+	movePlayer(deltaTime);
 }
 
 void render() {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 	
-	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
-	SDL_Rect rect = { playerX, playerY, 20, 20 };
-	SDL_RenderFillRect(renderer, &rect);
+	renderMap();
+	renderPlayer();
 
 	SDL_RenderPresent(renderer);
 }

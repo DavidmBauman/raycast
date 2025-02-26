@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|solutionrelative:Constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|solutionrelative:Main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|solutionrelative:Constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,26 +30,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Constants.h",
               "DocumentMoniker": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Constants.h",
               "RelativeDocumentMoniker": "Constants.h",
               "ToolTip": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Constants.h",
               "RelativeToolTip": "Constants.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-02-25T22:47:36.553Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Main.c",
               "DocumentMoniker": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Main.c",
               "RelativeDocumentMoniker": "Main.c",
               "ToolTip": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Main.c",
               "RelativeToolTip": "Main.c",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAEEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEUAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-02-25T21:50:47.568Z",
               "EditorCaption": ""
