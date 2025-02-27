@@ -8,7 +8,7 @@ const int map[MAP_NUM_ROWS][MAP_NUM_COLS] = {
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 1 , 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
+	{1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
 	{1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -29,6 +29,19 @@ struct Player {
 	float walkSpeed;
 	float turnSpeed;
 }  player;
+
+struct Ray {
+	float rayAngle;
+	float wallHitX;
+	float wallHitY;
+	float distance;
+	int wasHitVerticle;
+	int isRayFacingUpl;
+	int isRayFacingDown;
+	int isRayFacingLeft;
+	int isRayFacingRight;
+	int wallHitContent;
+} rays[NUM_RAYS];
 
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
@@ -122,6 +135,79 @@ void renderPlayer() {
 	);
 }
 
+float normalizeAngle(float angle) {
+	angle = remainder(angle,  TWO_PI);
+	if (angle < 0) {
+		angle = TWO_PI + angle;
+	}
+	return angle;
+}
+
+void castRay(float rayAngle, int stripId) {
+	rayAngle = normalizeAngle(rayAngle);
+
+	int isRayFacingDown = rayAngle > 0 && rayAngle < PI;
+	int isRayFacingUp = !isRayFacingDown;
+
+	int isRayFacingRight = rayAngle < 0.5 * PI || rayAngle > 1.5 * PI;
+	int isRayFacingLeft = !isRayFacingRight;
+
+	float xintercept, yintercept;
+	float xstep, ystep;
+
+	//Horizontal Ray-Grid Intersection Code
+	int foundHorizWallHit = FALSE;
+	float horzWallHitX = 0;
+	float horzWallHitY = 0;
+	int horzWallContent = 0;
+
+	//Find the y-coordinate of the closest horizontal grid intersection
+	yintercept = floot(player.y / TILE_SIZE) * TILE_SIZE;
+	yintercept += isRayFacingDown ? TILE_SIZE : 0;
+
+	//Find the x-coordinate of the closest horizontal grid intersection
+	xintercept = player.x + (yintercept - player.y) / tan(rayAngle);
+
+	//Calculate the increment xstep and ystep
+	ystep = TILE_SIZE;
+	ystep *= isRayFacingUp ? -1 : 1;
+
+	xstep = TILE_SIZE;
+	xstep *= (isRayFacingLeft && xstep > 0) ? -1 : 1;
+	xstep *= (isRayFacingRight && xstep < 0) ? -1 : 1;
+
+	float nextHorzTouchX = xintercept;
+	float nextHorzTouchY = yintercept;
+
+	//Increment x and y step until we find a wall											I DONT KNOW IF THIS IS RIGHT
+	while (nextHorzTouchX >= 0 && nextHorzTouchX <= WINDOW_WIDTH && nextHorzTouchY >= 0 && nextHorzTouchY <= WINDOW_HEIGHT) {
+		float xToCheck = nextHorzTouchX;
+		float yToCheck = nextHorzTouchY + (isRayFacingUp ? -1 : 0);
+
+		if (mapHasWallAt(xToCheck, yToCheck)) {
+			horzWallHitX = nextHorzTouchX;
+			horzWallHitY = nextHorzTouchY;
+			horzWallContent = map[(int)floor(yToCheck / TILE_SIZE)][(int)floor(xToCheck / TILE_SIZE)];
+			foundHorizWallHit = TRUE;
+			break;
+		}
+		else {
+			nextHorzTouchX += xstep;
+			nextHorzTouchY += ystep;
+		}
+
+	}
+}
+
+void castAllRays() {
+	float rayAngle = player.rotationAngle - (FOV_ANGLE / 2);
+
+	for (int stripId = 0; stripId < NUM_RAYS; stripId++) {
+		castRay(rayAngle, stripId);
+		rayAngle += FOV_ANGLE / NUM_RAYS;
+	}
+}
+
 void renderMap() {
 	for (int i = 0; i < MAP_NUM_ROWS; i++) {
 		for (int j = 0; j < MAP_NUM_COLS; j++) {
@@ -186,6 +272,7 @@ void update() {
 	ticksLastFrame = SDL_GetTicks();
 
 	movePlayer(deltaTime);
+	castAllRays();
 }
 
 void render() {
@@ -193,6 +280,7 @@ void render() {
 	SDL_RenderClear(renderer);
 	
 	renderMap();
+	//renderRays();
 	renderPlayer();
 
 	SDL_RenderPresent(renderer);
