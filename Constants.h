@@ -1,4 +1,4 @@
-//#pragma once
+//#pragma 
 #define FALSE 0
 #define TRUE 1
 
@@ -9,7 +9,7 @@
 #define MAP_NUM_ROWS 13
 #define MAP_NUM_COLS 20
 
-#define MINI_MAP_SCALE_FACTOR 1.0
+#define MINI_MAP_SCALE_FACTOR 0.3
 
 #define WINDOW_WIDTH (MAP_NUM_COLS * TILE_SIZE)
 #define WINDOW_HEIGHT (MAP_NUM_ROWS * TILE_SIZE)
@@ -18,6 +18,6 @@
 
 #define NUM_RAYS WINDOW_WIDTH
 
-#define FPS 30
+#define FPS 60
 #define FRAME_TIME_LENGTH (1000 / FPS)
 
