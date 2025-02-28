@@ -6,11 +6,11 @@
 const int map[MAP_NUM_ROWS][MAP_NUM_COLS] = {
 	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
-	{1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -25,7 +25,7 @@ struct Player {
 	float width;
 	float height;
 	int turnDirection; //-1 for left, +1 for right
-	int walkDirection; //-1 for back, +1 for front
+	int walkDirection; //-1 for back, +1 for 
 	float rotationAngle;
 	float walkSpeed;
 	float turnSpeed;
@@ -394,6 +394,35 @@ void renderColorBuffer() {
 	SDL_RenderCopy(renderer, colorBufferTexture, NULL, NULL);
 }
 
+void generate3DProjection() {
+	for (int i = 0; i < NUM_RAYS; i++) {
+		float perpDistance = rays[i].distance * cos(rays[i].rayAngle - player.rotationAngle);
+		float distanceProjPlane = (WINDOW_WIDTH / 2) / tan(FOV_ANGLE / 2);
+		float projectedWallHeight = (TILE_SIZE / perpDistance) * distanceProjPlane;
+
+		int wallStripHeight = projectedWallHeight;
+
+		int wallTopPixel = (WINDOW_HEIGHT / 2) - (wallStripHeight / 2);
+		wallTopPixel = wallTopPixel < 0 ? 0 : wallTopPixel;
+
+		int wallBottomPixel = (WINDOW_HEIGHT / 2) + (wallStripHeight / 2);
+		wallBottomPixel = wallBottomPixel > WINDOW_HEIGHT ? WINDOW_HEIGHT : wallBottomPixel;
+
+		//Color ceiling
+		for (int y = 0; y < wallTopPixel; y++) {
+			colorBuffer[(WINDOW_WIDTH * y) + i] = 0xFF333333;
+		}
+		//Color walls
+		for (int y = wallTopPixel; y < wallBottomPixel; y++) {
+			colorBuffer[(WINDOW_WIDTH * y) + i] = rays[i].wasHitVerticle ? 0xFFCCCCCC : 0xFFFFFFFF;
+		}
+		//Color floor
+		for (int y = wallBottomPixel; y < WINDOW_HEIGHT; y++) {
+			colorBuffer[(WINDOW_WIDTH * y) + i] = 0xFF666666;
+		}
+	}
+}
+
 void clearColorBuffer(Uint32 color) {
 	for (int x = 0; x < WINDOW_WIDTH; x++) {
 		for (int y = 0; y < WINDOW_HEIGHT; y++) {
@@ -405,6 +434,8 @@ void clearColorBuffer(Uint32 color) {
 void render() {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
+
+	generate3DProjection();
 	
 	renderColorBuffer();
 	clearColorBuffer(0x000000);

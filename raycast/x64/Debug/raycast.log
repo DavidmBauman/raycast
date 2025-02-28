@@ -32,4 +32,7 @@ C:\Users\dbaum\Documents\c_projects\raycast\Main.c(331,13): warning C4244: 'func
 C:\Users\dbaum\Documents\c_projects\raycast\Main.c(332,13): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
 C:\Users\dbaum\Documents\c_projects\raycast\Main.c(333,21): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
 C:\Users\dbaum\Documents\c_projects\raycast\Main.c(334,21): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(399,41): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(400,48): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(403,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   raycast.vcxproj -> C:\Users\dbaum\Documents\c_projects\raycast\x64\Debug\raycast.exe
