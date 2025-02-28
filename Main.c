@@ -49,6 +49,9 @@ SDL_Renderer* renderer = NULL;
 int isGameRunning = FALSE;
 int ticksLastFrame = 0;
 
+Uint32* colorBuffer = NULL;
+
+
 int initializeWindow() {
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
 		fprintf(stderr, "Error initializing SDL.\n");
@@ -91,6 +94,9 @@ void setup() {
 	player.rotationAngle = PI / 2;
 	player.walkSpeed = 200;
 	player.turnSpeed = 175 * (PI / 180);
+
+	//Allocate the total amounts of bytes in memory to hold colorBuffer
+	colorBuffer = (Uint32*) malloc(sizeof(Uint32) * (Uint32)WINDOW_WIDTH * (Uint32)WINDOW_HEIGHT);
 }
 
 int mapHasWallAt(float x, float y) {
@@ -368,9 +374,19 @@ void update() {
 	castAllRays();
 }
 
+void clearColorBuffer(Uint32 color) {
+	for (int x = 0; x < WINDOW_WIDTH; x++) {
+		for (int y = 0; y < WINDOW_HEIGHT; y++) {
+			colorBuffer[WINDOW_WIDTH * y + x] = color;
+		}
+	}
+}
+
 void render() {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
+	
+	clearColorBuffer(0xFF000000);
 	
 	renderMap();
 	renderRays();
