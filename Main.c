@@ -2,18 +2,19 @@
 #include <limits.h>
 #include <SDL.h>
 #include "Constants.h"
+#include "textures.h"
 
 const int map[MAP_NUM_ROWS][MAP_NUM_COLS] = {
 	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -51,7 +52,7 @@ int ticksLastFrame = 0;
 
 Uint32* colorBuffer = NULL;
 SDL_Texture* colorBufferTexture;
-Uint32* wallTexture = NULL;
+Uint32* textures[NUM_TEXTURES];
 
 int initializeWindow() {
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -109,13 +110,15 @@ void setup() {
 		WINDOW_HEIGHT
 	);
 
-	// manually create a texture with a blue/black pattern
-	wallTexture = (Uint32*) malloc(sizeof(Uint32) * (Uint32)TEXTURE_WIDTH * (Uint32)TEXTURE_HEIGHT);
-	for (int x = 0; x < TEXTURE_WIDTH; x++) {
-		for (int y = 0; y < TEXTURE_HEIGHT; y++) {
-			wallTexture[(TEXTURE_WIDTH * y) + x] = (x % 8 && y % 8) ? 0xFFFF0000 : 0xFF000000;
-		}
-	}
+	//Load textures from textures.h
+	textures[0] = (Uint32*)REDBRICK_TEXTURE;
+	textures[1] = (Uint32*)PURPLESTONE_TEXTURE;
+	textures[2] = (Uint32*)MOSSYSTONE_TEXTURE;
+	textures[3] = (Uint32*)GRAYSTONE_TEXTURE;
+	textures[4] = (Uint32*)COLORSTONE_TEXTURE;
+	textures[5] = (Uint32*)BLUESTONE_TEXTURE;
+	textures[6] = (Uint32*)WOOD_TEXTURE;
+	textures[7] = (Uint32*)EAGLE_TEXTURE;
 
 	
 }
@@ -431,13 +434,15 @@ void generate3DProjection() {
 		else {
 			textureOffsetX = (int)rays[i].wallHitX % TILE_SIZE;
 		}
+		//Get texture id from map
+		int textureNum = rays[i].wallHitContent - 1;
 		//Color walls
 		for (int y = wallTopPixel; y < wallBottomPixel; y++) {
 			int distanceFromTop = y + (wallStripHeight / 2) - (WINDOW_HEIGHT / 2);
 			int textureOffsetY = distanceFromTop * ((float)TEXTURE_HEIGHT / wallStripHeight);
 
 			//Set wall color based on texture
-			Uint32 texelColor = wallTexture[(TEXTURE_WIDTH * textureOffsetY) + textureOffsetX];
+			Uint32 texelColor = textures[textureNum][(TEXTURE_WIDTH * textureOffsetY) + textureOffsetX];
 			colorBuffer[(WINDOW_WIDTH * y) + i] = texelColor;
 		}
 		//Color floor
