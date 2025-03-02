@@ -113,9 +113,11 @@ void setup() {
 	wallTexture = (Uint32*) malloc(sizeof(Uint32) * (Uint32)TEXTURE_WIDTH * (Uint32)TEXTURE_HEIGHT);
 	for (int x = 0; x < TEXTURE_WIDTH; x++) {
 		for (int y = 0; y < TEXTURE_HEIGHT; y++) {
-			wallTexture[(TEXTURE_WIDTH * y) + x] = (x % 8 && y % 8) ? 0xFF0000FF : 0xFF000000;
+			wallTexture[(TEXTURE_WIDTH * y) + x] = (x % 8 && y % 8) ? 0xFFFF0000 : 0xFF000000;
 		}
 	}
+
+	
 }
 
 int mapHasWallAt(float x, float y) {
@@ -421,9 +423,22 @@ void generate3DProjection() {
 		for (int y = 0; y < wallTopPixel; y++) {
 			colorBuffer[(WINDOW_WIDTH * y) + i] = 0xFF333333;
 		}
+
+		int textureOffsetX;
+		if (rays[i].wasHitVerticle) {
+			textureOffsetX = (int)rays[i].wallHitY % TILE_SIZE;
+		}
+		else {
+			textureOffsetX = (int)rays[i].wallHitX % TILE_SIZE;
+		}
 		//Color walls
 		for (int y = wallTopPixel; y < wallBottomPixel; y++) {
-			colorBuffer[(WINDOW_WIDTH * y) + i] = rays[i].wasHitVerticle ? 0xFFCCCCCC : 0xFFFFFFFF;
+			int distanceFromTop = y + (wallStripHeight / 2) - (WINDOW_HEIGHT / 2);
+			int textureOffsetY = distanceFromTop * ((float)TEXTURE_HEIGHT / wallStripHeight);
+
+			//Set wall color based on texture
+			Uint32 texelColor = wallTexture[(TEXTURE_WIDTH * textureOffsetY) + textureOffsetX];
+			colorBuffer[(WINDOW_WIDTH * y) + i] = texelColor;
 		}
 		//Color floor
 		for (int y = wallBottomPixel; y < WINDOW_HEIGHT; y++) {

@@ -1,38 +1,39 @@
 ﻿  Main.c
 C:\Users\dbaum\Documents\c_projects\raycast\Main.c(97,28): warning C4305: '=': truncation from 'double' to 'float'
 C:\Users\dbaum\Documents\c_projects\raycast\Main.c(99,25): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(124,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(125,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(133,30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(134,30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(156,12): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(157,12): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(158,36): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(159,36): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(147,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(148,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(149,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(150,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(164,9): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(168,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(170,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(196,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(200,24): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(206,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(241,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(245,24): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(251,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(311,25): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(307,40): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(324,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(325,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(326,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(327,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(339,13): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(340,13): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(341,21): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(342,21): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(407,41): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(408,48): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\Main.c(411,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(127,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(128,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(136,30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(137,30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(159,12): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(160,12): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(161,36): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(162,36): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(150,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(151,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(152,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(153,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(167,9): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(171,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(173,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(199,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(203,24): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(209,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(244,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(248,24): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(254,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(314,25): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(310,40): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(327,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(328,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(329,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(330,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(342,13): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(343,13): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(344,21): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(345,21): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(410,41): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(411,48): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(414,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\dbaum\Documents\c_projects\raycast\Main.c(437,41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   raycast.vcxproj -> C:\Users\dbaum\Documents\c_projects\raycast\x64\Debug\raycast.exe
