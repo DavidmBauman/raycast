@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\map.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|solutionrelative:map.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|solutionrelative:Main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\graphics.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|solutionrelative:graphics.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\graphics.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|solutionrelative:graphics.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|solutionrelative:map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29DED2AF-928A-4CC6-B7DE-9E5300ACD21C}|raycast.vcxproj|C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\defs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -38,41 +38,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Main.c",
-              "DocumentMoniker": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Main.c",
-              "RelativeDocumentMoniker": "Main.c",
-              "ToolTip": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Main.c",
-              "RelativeToolTip": "Main.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-03-07T03:10:44.494Z",
+              "DocumentIndex": 2,
+              "Title": "map.h",
+              "DocumentMoniker": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\map.h",
+              "RelativeDocumentMoniker": "map.h",
+              "ToolTip": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\map.h",
+              "RelativeToolTip": "map.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-28T13:42:40.68Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "graphics.h",
-              "DocumentMoniker": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\graphics.h",
-              "RelativeDocumentMoniker": "graphics.h",
-              "ToolTip": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\graphics.h",
-              "RelativeToolTip": "graphics.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-24T13:46:25.528Z",
+              "DocumentIndex": 0,
+              "Title": "map.c",
+              "DocumentMoniker": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\map.c",
+              "RelativeDocumentMoniker": "map.c",
+              "ToolTip": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\map.c",
+              "RelativeToolTip": "map.c",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACgAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-03-28T13:43:47.97Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "graphics.c",
-              "DocumentMoniker": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\graphics.c",
-              "RelativeDocumentMoniker": "graphics.c",
-              "ToolTip": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\graphics.c",
-              "RelativeToolTip": "graphics.c",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAEsAAAA9AAAAAAAAAA==",
+              "Title": "Main.c",
+              "DocumentMoniker": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Main.c",
+              "RelativeDocumentMoniker": "Main.c",
+              "ToolTip": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\Main.c",
+              "RelativeToolTip": "Main.c",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAALIAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-03-24T13:46:50.236Z",
+              "WhenOpened": "2025-03-07T03:10:44.494Z",
               "EditorCaption": ""
             },
             {
@@ -83,7 +83,7 @@
               "RelativeDocumentMoniker": "defs.h",
               "ToolTip": "C:\\Users\\dbaum\\Documents\\c_projects\\raycast\\defs.h",
               "RelativeToolTip": "defs.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-03-07T03:17:22.934Z",
               "EditorCaption": ""
