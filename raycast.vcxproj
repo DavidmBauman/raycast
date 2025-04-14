@@ -137,12 +137,16 @@
     <ClCompile Include="graphics.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="map.c" />
+    <ClCompile Include="player.c" />
+    <ClCompile Include="ray.c" />
     <ClCompile Include="textures.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defs.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="ray.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="textures.h" />
   </ItemGroup>
