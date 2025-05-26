@@ -3,14 +3,4 @@ C:\Users\dbaum\Documents\c_projects\raycast\Main.c(71,47): warning C4244: 'initi
 C:\Users\dbaum\Documents\c_projects\raycast\Main.c(73,64): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\dbaum\Documents\c_projects\raycast\Main.c(101,50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 C:\Users\dbaum\Documents\c_projects\raycast\Main.c(131,5): warning C4026: function declared with formal parameter list
-  player.c
-C:\Users\dbaum\Documents\c_projects\raycast\player.c(10,25): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\dbaum\Documents\c_projects\raycast\player.c(12,21): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\dbaum\Documents\c_projects\raycast\player.c(19,33): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\player.c(20,33): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\player.c(31,18): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\player.c(32,18): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\player.c(33,22): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-C:\Users\dbaum\Documents\c_projects\raycast\player.c(34,23): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
   raycast.vcxproj -> C:\Users\dbaum\Documents\c_projects\raycast\x64\Debug\raycast.exe
